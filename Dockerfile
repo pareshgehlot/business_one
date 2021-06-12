@@ -3,8 +3,10 @@ FROM node:latest
 RUN mkdir -p /home/ec2-user/docker_contents/business_one
 WORKDIR /home/ec2-user/docker_contents/business_one
 
-COPY package.json .
+COPY package.json /home/ec2-user/docker_contents/business_one/
 
 RUN npm install
+
+COPY . /home/ec2-user/docker_contents/business_one/
 
 CMD ["npm","start"]
