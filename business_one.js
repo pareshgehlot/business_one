@@ -1,9 +1,9 @@
-const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
+const cluster = require("cluster");
+const numCPUs = require("os").cpus().length;
 const express = require("express");
 
 // user installed modules
-const morgan = require('morgan');
+const morgan = require("morgan");
 
 // user defined files
 const string_routes = require("./routes/stringRoutes");
@@ -17,7 +17,7 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 
-  cluster.on('exit', (worker, code, signal) => {
+  cluster.on("exit", (worker, code, signal) => {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
@@ -33,7 +33,7 @@ if (cluster.isMaster) {
   app.use(express.json());
 
   // user installed modules middleware
-  app.use(morgan('dev'));
+  app.use(morgan("dev"));
 
   // CUSTOM MIDDLEWARES
   app.use("/string", string_routes);
@@ -48,11 +48,10 @@ if (cluster.isMaster) {
 
   // starting express server: STARTS
   app.listen(server_port, server_ip, (req, res) => {
-    console.log(`business_two server started on ${server_ip}:${server_port}`);
+    console.log(`business_one server started on ${server_ip}:${server_port}`);
   });
   // starting express server: ENDS
 }
-process.on('uncaughtException', function(err) {
-  console.log('Caught exception: ' + err);
+process.on("uncaughtException", function(err) {
+  console.log("Caught exception: " + err);
 });
-
