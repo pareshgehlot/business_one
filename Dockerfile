@@ -9,4 +9,6 @@ RUN npm install
 
 COPY . /home/ec2-user/docker_contents/business_one/
 
+EXPOSE 3000
+
 CMD ["npm","start"]
