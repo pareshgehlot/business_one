@@ -2,7 +2,7 @@
 
 git clone https://github.com/pareshgehlot/business_one.git
 
-cd authenticiti
+cd business_one
 
 npm install
 
